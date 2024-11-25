@@ -17,9 +17,12 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -43,7 +46,7 @@ class MainActivity : ComponentActivity() {
             Modifier
                 .fillMaxHeight()
                 .fillMaxSize()
-                .background(Color(android.graphics.Color.parseColor("#eeeefb"))),
+                .background(colorResource(id = R.color.back_ground)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             ConstraintLayout {
@@ -58,7 +61,7 @@ class MainActivity : ComponentActivity() {
                             start.linkTo(parent.start)
                         }
                         .background(
-                            Color(android.graphics.Color.parseColor("#5e3bee")),
+                            color = colorResource(id = R.color.blue_3),
                             shape = RoundedCornerShape(bottomEnd = 40.dp, bottomStart = 40.dp)
                         )
                 )
@@ -79,24 +82,25 @@ class MainActivity : ComponentActivity() {
                         Text(
                             text = "こんにちは",
                             color = Color.White,
-                            fontSize = 18.sp,
+                            fontSize = 23.sp,
                             fontWeight = FontWeight.Bold,
                         )
                         Text(
                             text = "Tsunakiです",
                             color = Color.White,
-                            fontSize = 22.sp,
+                            fontSize = 26.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(top = 14.dp)
                         )
                     }
                     Image(
-                        painter = painterResource(id = R.drawable.profile),
+                        painter = painterResource(id = R.drawable.dog_icon),
+                        contentScale = ContentScale.Crop,
                         contentDescription = null,
                         modifier = Modifier
-                            .width(100.dp)
-                            .height(100.dp)
-                            .clickable { }
+                            .size(130.dp)
+                            .clip(CircleShape)
+                            .clickable { },
                     )
                 }
                 // ３つボタンの表示エリア
@@ -105,7 +109,7 @@ class MainActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 24.dp, start = 24.dp, end = 24.dp)
+                        .padding(top = 24.dp, start = 14.dp, end = 14.dp)
                         .shadow(3.dp, shape = RoundedCornerShape(20.dp))
                         .background(
                             color = Color.White,
@@ -125,7 +129,7 @@ class MainActivity : ComponentActivity() {
                             .height(90.dp)
                             .width(90.dp)
                             .background(
-                                color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                                color = colorResource(id = R.color.blue_1),
                                 shape = RoundedCornerShape(20.dp)
                             ),
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -152,7 +156,7 @@ class MainActivity : ComponentActivity() {
                             .height(90.dp)
                             .width(90.dp)
                             .background(
-                                color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                                color = colorResource(id = R.color.blue_1),
                                 shape = RoundedCornerShape(20.dp)
                             ),
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -179,7 +183,7 @@ class MainActivity : ComponentActivity() {
                             .height(90.dp)
                             .width(90.dp)
                             .background(
-                                color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                                color = colorResource(id = R.color.blue_1),
                                 shape = RoundedCornerShape(20.dp)
                             ),
                         horizontalAlignment = Alignment.CenterHorizontally
@@ -238,8 +242,8 @@ class MainActivity : ComponentActivity() {
                     .background(
                         brush = Brush.horizontalGradient(
                             colors = listOf(
-                                Color(android.graphics.Color.parseColor("#7787f9")),
-                                Color(android.graphics.Color.parseColor("#b6c2fe"))
+                                colorResource(id = R.color.blue_2),
+                                colorResource(id = R.color.blue_1)
                             )
                         ), shape = RoundedCornerShape(25.dp)
                     )
@@ -292,8 +296,8 @@ class MainActivity : ComponentActivity() {
                         Modifier
                             .height(90.dp)
                             .background(
-                                color = Color(android.graphics.Color.parseColor("#b6c2fe")),
-                                shape = RoundedCornerShape(5.dp)
+                                color = colorResource(id = R.color.blue_1),
+                                shape = RoundedCornerShape(15.dp)
                             ),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -304,7 +308,11 @@ class MainActivity : ComponentActivity() {
                                 .size(50.dp)
                                 .padding(10.dp)
                         )
-                        Text(text = item.text)
+                        Text(
+                            text = item.text,
+                            color = Color.White,
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 }
             }
