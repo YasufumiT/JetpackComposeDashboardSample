@@ -310,7 +310,7 @@ class MainActivity : ComponentActivity() {
                         )
                         Text(
                             text = item.text,
-                            color = Color.White,
+                            color = Color(android.graphics.Color.parseColor("#5e3bee")),
                             fontWeight = FontWeight.Bold
                         )
                     }
