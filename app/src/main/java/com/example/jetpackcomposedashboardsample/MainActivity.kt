@@ -109,7 +109,7 @@ class MainActivity : ComponentActivity() {
                     horizontalArrangement = Arrangement.Center,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(top = 24.dp, start = 14.dp, end = 14.dp)
+                        .padding(top = 24.dp, start = 34.dp, end = 34.dp)
                         .shadow(3.dp, shape = RoundedCornerShape(20.dp))
                         .background(
                             color = Color.White,
